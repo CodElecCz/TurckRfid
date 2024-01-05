@@ -7,3 +7,5 @@ Sent HTTP-POST http://myserver.com/findOne?grokkerId=140112345&timestamp=2015-12
 
 * HTTP server POST
 * BECKHOFF TwinCAT ADS to write PLC variables timestamp/epc
+
+![image](https://github.com/CodElecCz/TurckRfid/assets/44197470/f6f35cca-7f4a-4b59-86c2-8838ef9e820a)
