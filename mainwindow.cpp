@@ -9,6 +9,7 @@
 
 #include <QDebug>
 #include <QToolButton>
+#include <QByteArray>
 
 using namespace Qt::StringLiterals;
 
@@ -222,21 +223,24 @@ int MainWindow::HttpServerOpen()
 {
     m_httpServer->route("/findOne", [=](const QHttpServerRequest &request) {
 
-        QString httpRequest = u"/findOne?%1"_s.arg(request.query().toString());
+        QString httpRequest = u"/findOne?%1"_s.arg(QUrl::fromPercentEncoding(request.query().toString().toUtf8()));
         qDebug() << httpRequest;
         m_httpView->SetRequest(httpRequest);
 
-        if(request.query().hasQueryItem("epc"))
+        bool hasEpc = request.query().hasQueryItem("epc");
+        bool hasTime = request.query().hasQueryItem("time");
+
+        if(hasEpc)
         {
-            QString epc = request.query().queryItemValue("epc");
+            QString epc = QUrl::fromPercentEncoding(request.query().queryItemValue("epc").toUtf8());
             //qDebug() << epc;
             m_ads->SetTag(epc);
             m_httpView->SetTag(epc);
         }
 
-        if(request.query().hasQueryItem("time"))
+        if(hasTime)
         {
-            QString time = request.query().queryItemValue("time");
+            QString time = QUrl::fromPercentEncoding(request.query().queryItemValue("time").toUtf8());
             //qDebug() << time;
             m_ads->SetLocalTime(time);
             m_httpView->SetTime(time);
@@ -245,7 +249,7 @@ int MainWindow::HttpServerOpen()
         m_ads->AddCounter();
         m_httpView->SetCounter(m_ads->GetCounter());
 
-        return host(request) + u"/findOne/"_s;
+        return host(request) + u"/findOne?%1&%2"_s.arg(hasEpc? "epc=stored":"epc=missing").arg(hasTime? "time=stored":"time=missing");
     });
 
     m_httpServer->afterRequest([](QHttpServerResponse &&resp) {
