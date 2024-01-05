@@ -1,6 +1,8 @@
 #include "httpview.h"
 #include "ui_httpview.h"
 
+#include <QDateTime>
+
 HttpView::HttpView(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::HttpView)
@@ -31,4 +33,10 @@ void HttpView::SetCounter(uint32_t counter)
 void HttpView::SetStatus(const QString& status)
 {
     ui->labelStatusText->setText(status);
+}
+
+void HttpView::SetRequest(const QString& httpRequest)
+{
+    ui->labelRequestText->setText(httpRequest);
+    ui->labelRTimeText->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss"));
 }

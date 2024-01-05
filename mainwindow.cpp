@@ -221,10 +221,15 @@ int MainWindow::AdsClose()
 int MainWindow::HttpServerOpen()
 {
     m_httpServer->route("/findOne", [=](const QHttpServerRequest &request) {
+
+        QString httpRequest = u"/findOne?%1"_s.arg(request.query().toString());
+        qDebug() << httpRequest;
+        m_httpView->SetRequest(httpRequest);
+
         if(request.query().hasQueryItem("epc"))
         {
             QString epc = request.query().queryItemValue("epc");
-            qDebug() << epc;
+            //qDebug() << epc;
             m_ads->SetTag(epc);
             m_httpView->SetTag(epc);
         }
@@ -232,7 +237,7 @@ int MainWindow::HttpServerOpen()
         if(request.query().hasQueryItem("time"))
         {
             QString time = request.query().queryItemValue("time");
-            qDebug() << time;
+            //qDebug() << time;
             m_ads->SetLocalTime(time);
             m_httpView->SetTime(time);
         }

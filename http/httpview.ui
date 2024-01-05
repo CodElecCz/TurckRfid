@@ -15,9 +15,53 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="4" column="0">
-      <spacer name="horizontalSpacer_2">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="3">
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="labelRTimeText">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="labelRequestText">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="labelRequest">
+       <property name="text">
+        <string>                 Request:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -32,8 +76,15 @@
        </property>
       </spacer>
      </item>
-     <item row="4" column="1">
-      <spacer name="verticalSpacer">
+     <item row="1" column="1" alignment="Qt::AlignRight">
+      <widget class="QLabel" name="labelRTime">
+       <property name="text">
+        <string>Time:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <spacer name="verticalSpacer_3">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -45,10 +96,40 @@
        </property>
       </spacer>
      </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="2">
+      <widget class="QLabel" name="labelStatusText">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="1" alignment="Qt::AlignRight">
       <widget class="QLabel" name="labelTag">
        <property name="text">
         <string>Tag:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" alignment="Qt::AlignRight">
+      <widget class="QLabel" name="labelCounter">
+       <property name="text">
+        <string>Message Counter:</string>
        </property>
       </widget>
      </item>
@@ -64,44 +145,18 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
-      <spacer name="horizontalSpacer">
+     <item row="6" column="1">
+      <spacer name="verticalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>20</width>
+         <height>40</height>
         </size>
        </property>
       </spacer>
-     </item>
-     <item row="3" column="1" alignment="Qt::AlignRight">
-      <widget class="QLabel" name="labelTime">
-       <property name="text">
-        <string>Time:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1" alignment="Qt::AlignRight">
-      <widget class="QLabel" name="labelCounter">
-       <property name="text">
-        <string>Message Counter:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLabel" name="labelTagText">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="labelCounterText">
@@ -122,8 +177,44 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="labelStatusText">
+     <item row="2" column="3">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="6" column="0">
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="1" alignment="Qt::AlignRight">
+      <widget class="QLabel" name="labelTime">
+       <property name="text">
+        <string>Time:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="labelTagText">
        <property name="font">
         <font>
          <bold>true</bold>

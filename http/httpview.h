@@ -19,6 +19,7 @@ public:
     void SetTag(const QString& tag);
     void SetCounter(uint32_t counter);
     void SetStatus(const QString& status);
+    void SetRequest(const QString& httpRequest);
 
 private:
     Ui::HttpView *ui;
