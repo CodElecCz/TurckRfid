@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>application.ico</file>
         <file>CodElec.png</file>
+        <file>Turck.png</file>
     </qresource>
 </RCC>
