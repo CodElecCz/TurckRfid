@@ -12,7 +12,8 @@ TwinCatAds::TwinCatAds(QObject *parent)
     qDebug() << u"AdsGetDllVersion: %1"_s.arg(ads_ver);
 
     //169.254.192.231.1.1
-    AmsAddr	serverAddr = {{169, 254, 192, 231, 1, 1}, 851};
+    //192.168.41.110.1.1
+    AmsAddr	serverAddr = {{192, 168, 41, 110, 1, 1}, 851};
     m_serverAddr = serverAddr;
 
     m_varTag = "MAIN.fbPACK_Station.fbTurckRFID.Tag";

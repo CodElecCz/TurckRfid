@@ -228,28 +228,36 @@ int MainWindow::HttpServerOpen()
         m_httpView->SetRequest(httpRequest);
 
         bool hasEpc = request.query().hasQueryItem("epc");
-        bool hasTime = request.query().hasQueryItem("time");
+        bool hasTime = request.query().hasQueryItem("timestamp");
+        int ads_ret = 0;
 
         if(hasEpc)
         {
             QString epc = QUrl::fromPercentEncoding(request.query().queryItemValue("epc").toUtf8());
             //qDebug() << epc;
-            m_ads->SetTag(epc);
+            ads_ret = m_ads->SetTag(epc);
             m_httpView->SetTag(epc);
         }
 
         if(hasTime)
         {
-            QString time = QUrl::fromPercentEncoding(request.query().queryItemValue("time").toUtf8());
+            QString time = QUrl::fromPercentEncoding(request.query().queryItemValue("timestamp").toUtf8());
             //qDebug() << time;
-            m_ads->SetLocalTime(time);
+            if(ads_ret == 0)
+                ads_ret = m_ads->SetLocalTime(time);
+
             m_httpView->SetTime(time);
         }
 
-        m_ads->AddCounter();
+        if(ads_ret == 0)
+            ads_ret = m_ads->AddCounter();
+
         m_httpView->SetCounter(m_ads->GetCounter());
 
-        return host(request) + u"/findOne?%1&%2"_s.arg(hasEpc? "epc=stored":"epc=missing").arg(hasTime? "time=stored":"time=missing");
+        if(ads_ret == 0)
+            return host(request) + u"/findOne?%1&%2"_s.arg(hasEpc? "epc=stored":"epc=missing").arg(hasTime? "timestamp=stored":"timestamp=missing");
+        else
+            return host(request) + u"/findOne?ads_error=%1"_s.arg(QString::number(ads_ret));
     });
 
     m_httpServer->afterRequest([](QHttpServerResponse &&resp) {
