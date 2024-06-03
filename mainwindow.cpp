@@ -261,18 +261,18 @@ int MainWindow::HttpServerOpen()
     });
 
     m_httpServer->afterRequest([](QHttpServerResponse &&resp) {
-        resp.setHeader("Server", "Qt HTTP Server");
+        resp.setHeader("Server", "HTTP Server");
         return std::move(resp);
     });
 
     const auto port = m_httpServer->listen(QHostAddress::Any, 18080);
     if (!port) {
-        qWarning() << QCoreApplication::translate("QHttpServerExample",
+        qWarning() << QCoreApplication::translate("HTTP Server",
                                                   "Server failed to listen on a port.");
         return -1;
     }
 
-    qInfo().noquote() << QCoreApplication::translate("QHttpServerExample",
+    qInfo().noquote() << QCoreApplication::translate("HTTP Server",
                                                      "Running on http://127.0.0.1:%1/").arg(port);
 
     return 0;
