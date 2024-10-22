@@ -16,9 +16,9 @@ TwinCatAds::TwinCatAds(QObject *parent)
     AmsAddr	serverAddr = {{192, 168, 41, 110, 1, 1}, 851};
     m_serverAddr = serverAddr;
 
-    m_varTag = "MAIN.fbPACK_Station.fbTurckRFID.Tag";
-    m_varLocalTime = "MAIN.fbPACK_Station.fbTurckRFID.LocalTime";
-    m_varCounter = "MAIN.fbPACK_Station.fbTurckRFID.Counter";
+    m_varTag = "MAIN.fbSCAN_Station.fbTurckRFID.Tag";
+    m_varLocalTime = "MAIN.fbSCAN_Station.fbTurckRFID.LocalTime";
+    m_varCounter = "MAIN.fbSCAN_Station.fbTurckRFID.Counter";
 
     memset(m_varDataTag, 0, sizeof(m_varDataTag));
     memset(m_varDataLocalTime, 0, sizeof(m_varDataLocalTime));
